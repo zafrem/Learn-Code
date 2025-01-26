@@ -36,3 +36,5 @@ if __name__ == "__main__":
             _persent = (past_info - current_info)/current_info * 100
         save_data_text(f"{coin_name}_info.txt", current_info, _persent)
         print(load_data_text(f"{coin_name}_info.txt"))
+
+        # Add your own abort conditions.

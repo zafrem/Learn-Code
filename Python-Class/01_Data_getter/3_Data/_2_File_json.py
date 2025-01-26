@@ -47,3 +47,5 @@ if __name__ == "__main__":
 
         save_data_json(f"{coin_name}_info.json", current_info, _persent)
         print(load_data_json(f"{coin_name}_info.json"))
+
+        # Add your own abort conditions.
