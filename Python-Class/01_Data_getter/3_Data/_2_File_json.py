@@ -22,9 +22,9 @@ def load_data_json(filename):
         return {}
 
 
-def save_data_json(filename, price, change_value):
+def save_data_json(filename, price, percentage):
     data = load_data_json(filename)
-    add_data = {datetime.today().strftime("%Y-%m-%d %H:%M:%S") : f"{price} ({change_value})"}
+    add_data = {datetime.today().strftime("%Y-%m-%d %H:%M:%S") : f"{price} ({percentage})"}
     data.update(add_data)
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)  # indent=4 makes the JSON readable
@@ -36,16 +36,17 @@ if __name__ == "__main__":
 
     current_info = 0.0
     past_info = 0.0
-    _persent = 0.0
+    percentage = 0.0
+
     while True:
         time.sleep(60 * 60 * 24)  # Daily
 
         past_info = current_info
         current_info = coin_data.get_altcoin_current_price(coin_name)
         if 0.0 != past_info:
-            _persent = (past_info - current_info) / current_info * 100
+            percentage = (current_info - past_info) / current_info * 100
 
-        save_data_json(f"{coin_name}_info.json", current_info, _persent)
+        save_data_json(f"{coin_name}_info.json", current_info, percentage)
         print(load_data_json(f"{coin_name}_info.json"))
 
         # Add your own abort conditions.

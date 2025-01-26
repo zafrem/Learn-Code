@@ -12,19 +12,19 @@ def create_table():
         CREATE TABLE IF NOT EXISTS coin (
             dt DATETIME PRIMARY KEY default current_timestamp,
             current_info INTEGER,
-            change_point INTEGER
+            percentage INTEGER
         )
     ''')
     print("Table created successfully.")
 
 
-def insert_data(curr_point, changed_point):
+def insert_data(curr_point, percentage):
     cursor.execute('''
-        INSERT INTO coin (current_info, change_point) 
+        INSERT INTO coin (current_info, percentage) 
         VALUES (?, ?)
-    ''', (curr_point, changed_point))
+    ''', (curr_point, percentage))
     conn.commit()
-    print(f"Inserted {curr_point}, {changed_point} into the table.")
+    print(f"Inserted {curr_point}, {percentage} into the table.")
 
 
 def read_all_data():
@@ -46,17 +46,18 @@ if __name__ == "__main__":
 
     current_info = 0.0
     past_info = 0.0
-    _persent = 0.0
+    percentage = 0.0
+
     while True:
-        time.sleep(5)#60 * 60 * 24)  # Daily
+        time.sleep(60 * 60 * 24)  # Daily
 
         past_info = current_info
         current_info = coin_data.get_altcoin_current_price(coin_name)
         if 0.0 != past_info:
-            _persent = (past_info - current_info) / current_info * 100
+            percentage = (current_info - past_info) / current_info * 100
 
         # Insert sample data
-        insert_data(current_info, _persent)
+        insert_data(current_info, percentage)
         # Fetch and display the data
         read_all_data()
 

@@ -15,8 +15,7 @@ def load_data_text(filename):
             for lines in read_file.readlines():
                 if not lines: break
                 row = lines.rstrip("\n").split("|")
-                print(f"Date : {row[0]}, Price : {row[1]}, Change Value : {row[2]}")
-            print("\n")
+                print(f"Date : {row[0]}, Price : {row[1]}, Percentage : {row[2]}")
             read_file.close()
             break
         read_file.close()
@@ -26,15 +25,16 @@ if __name__ == "__main__":
     coin_name = "BTCUSDC"
     current_info = 0.0
     past_info = 0.0
-    _persent = 0.0
+    percentage = 0.0
+
     while True:
-        time.sleep(60 * 60 * 24)  # Daily
+        time.sleep(5)#60 * 60 * 24)  # Daily
 
         past_info = current_info
         current_info = coin_data.get_altcoin_current_price(coin_name)
         if 0.0 != past_info:
-            _persent = (past_info - current_info)/current_info * 100
-        save_data_text(f"{coin_name}_info.txt", current_info, _persent)
-        print(load_data_text(f"{coin_name}_info.txt"))
+            percentage = (current_info - past_info)/current_info * 100
+        save_data_text(f"{coin_name}_info.txt", current_info, percentage)
+        load_data_text(f"{coin_name}_info.txt")
 
         # Add your own abort conditions.
