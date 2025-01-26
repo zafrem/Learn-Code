@@ -33,7 +33,7 @@ def save_data_json(filename, coin_name, price, change_value):
 
 
 if __name__ == "__main__":
-    coin_name = "bitcoin"
+    coin_name = "DOGEUSDT"
     #init_json_file(coin_name, f"{coin_name}_info.json")
 
     current_info, change_point = coin_data.get_today_stock_data(coin_name)
