@@ -23,15 +23,16 @@ def load_data_text(filename):
 
 
 if __name__ == "__main__":
+    coin_name = "BTCUSDC"
     current_info = 0.0
     past_info = 0.0
-    _pers = 0.0
+    _persent = 0.0
     while True:
         time.sleep(60 * 60 * 24)  # Daily
-        coin_name = "DOGEUSD"
+
         past_info = current_info
         current_info = coin_data.get_altcoin_current_price(coin_name)
-        _pers = (current_info - past_info)/current_info * 100
-        print(current_info, _pers)
-        save_data_text(f"{coin_name}_info.txt", current_info, _pers)
-        load_data_text(f"{coin_name}_info.txt")
+        if 0.0 != past_info:
+            _persent = (past_info - current_info)/current_info * 100
+        save_data_text(f"{coin_name}_info.txt", current_info, _persent)
+        print(load_data_text(f"{coin_name}_info.txt"))

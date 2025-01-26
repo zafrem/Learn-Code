@@ -25,4 +25,4 @@ def get_altcoin_current_price(altcoin):
 
 if __name__ == '__main__':
     print(get_altcoin_list())
-    print(get_altcoin_current_price('DOGEUSDC'))
+    print(get_altcoin_current_price('BTCUSDC'))

@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 
 
-def init_json_file(coin_name, filename):
+def init_json_file(filename):
     data = {
     }
     with open(filename, 'w') as file:
@@ -22,20 +22,28 @@ def load_data_json(filename):
         return {}
 
 
-def save_data_json(filename, coin_name, price, change_value):
+def save_data_json(filename, price, change_value):
     data = load_data_json(filename)
-    print(data)
     add_data = {datetime.today().strftime("%Y-%m-%d %H:%M:%S") : f"{price} ({change_value})"}
     data.update(add_data)
-    print(data)
     with open(filename, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4)  # indent=4 makes the JSON readable
 
 
 if __name__ == "__main__":
-    coin_name = "DOGEUSDT"
-    #init_json_file(coin_name, f"{coin_name}_info.json")
+    coin_name = "BTCUSDC"
+    init_json_file(f"{coin_name}_info.json")
 
-    current_info, change_point = coin_data.get_today_stock_data(coin_name)
-    save_data_json(f"{coin_name}_info.json", coin_name, current_info, change_point)
-    # load_data_json(f"{coin_name}_info.json")
+    current_info = 0.0
+    past_info = 0.0
+    _persent = 0.0
+    while True:
+        time.sleep(60 * 60 * 24)  # Daily
+
+        past_info = current_info
+        current_info = coin_data.get_altcoin_current_price(coin_name)
+        if 0.0 != past_info:
+            _persent = (past_info - current_info) / current_info * 100
+
+        save_data_json(f"{coin_name}_info.json", current_info, _persent)
+        print(load_data_json(f"{coin_name}_info.json"))
