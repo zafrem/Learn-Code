@@ -1,6 +1,6 @@
 # Learn Code
 This repo 
-## [Class : Python Coding](Class/README.md)
-## 
+## [Python Coding](Python-Class/README.md)
+## [FastAPI Coding](NextJS-Class/README.md)
 ## 
 ## 
