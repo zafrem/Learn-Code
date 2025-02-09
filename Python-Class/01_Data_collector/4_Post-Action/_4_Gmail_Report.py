@@ -2,7 +2,10 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 from email import encoders
+import _1_technical_analysis_Stochastic as stochastic
+import os
 
 smtp_server = "smtp.gmail.com"
 smtp_port = 587
@@ -22,10 +25,28 @@ message['Subject'] = "Stochastic Report"
 body = "This is main body - Stochanstic Report plantext.."
 message.attach(MIMEText(body, 'plain'))
 
-# Image
-#message.attach()
+# attach Image
+screenshop_file_name = 'stochastic_report.png'
 
-#attach file
+if os.path.exists(screenshop_file_name):
+    os.remove(screenshop_file_name)
+
+df = stochastic.init_pre_df()
+plt, df = stochastic.stochastic(df)
+plt.savefig(screenshop_file_name, bbox_inches='tight')
+
+fp = open(screenshop_file_name, 'rb')
+msgImage = MIMEImage(fp.read())
+fp.close()
+
+msgImage.add_header('Content-ID', '<image1>')
+msgImage.add_header('Content-Disposition', 'inline', filename=os.path.basename(logo))
+msgImage.add_header("Content-Transfer-Encoding", "base64")
+message.attach(msgImage)
+
+os.remove(screenshop_file_name)
+
+# attach File
 attach_file = open('stochastic_report.docx','rb')
 attach_mime = MIMEBase('application','octet-stream')
 attach_mime.set_payload((attach_file).read())
