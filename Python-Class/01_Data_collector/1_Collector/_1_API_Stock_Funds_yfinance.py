@@ -21,8 +21,7 @@ def get_funds_data_ticker(target):
 
 if "__main__" == __name__:
     msft = get_stock_data_ticker("MSFT")
-    print(msft)
-    """print(msft.info)
+    print(msft.info)
     print(msft.calendar)
     print(msft.analyst_price_targets)
     print(msft.quarterly_income_stmt)
@@ -34,4 +33,4 @@ if "__main__" == __name__:
 
     spy = get_funds_data_ticker('SPY')
     print(spy.description)
-    print(spy.top_holdings)"""
+    print(spy.top_holdings)
