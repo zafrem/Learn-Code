@@ -4,15 +4,17 @@
 import pandas_datareader.data as web
 import datetime as dt
 
-
 def get_pandas_naver_data(id, start, end):
     _df = web.DataReader(id, "naver", start=start, end=end)
     return _df
 
-
 def get_pandas_stooq_data(id, start, end):
     _df = web.DataReader(id, "stooq", start=start, end=end)
     return _df
+
+
+def get_pandas_fred_data(id):
+    return web.get_data_fred(id)
 
 
 if "__main__" == __name__:
@@ -23,4 +25,7 @@ if "__main__" == __name__:
     end_date = dt.datetime(2025, 1, 20)
 
     df = get_pandas_stooq_data('AAPL', start_date, end_date)
+    print(df.head())
+
+    df = get_pandas_fred_data("UNRATE")
     print(df.head())

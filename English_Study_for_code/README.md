@@ -1,9 +1,13 @@
-# NextJS
+# English Study for Code
 
-## Index
+## Study Ops
 
-### First Step?
+### Study Execute
+  - Platform
+    - Web Page
+    - Telegram
+    - Slack
+  - 
+### Study Data
+
 ### 
-
-NodeJS
-React

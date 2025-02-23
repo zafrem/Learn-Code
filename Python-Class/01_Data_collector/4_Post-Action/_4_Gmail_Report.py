@@ -40,7 +40,7 @@ msgImage = MIMEImage(fp.read())
 fp.close()
 
 msgImage.add_header('Content-ID', '<image1>')
-msgImage.add_header('Content-Disposition', 'inline', filename=os.path.basename(logo))
+msgImage.add_header('Content-Disposition', 'inline', filename=os.path.basename(screenshop_file_name))
 msgImage.add_header("Content-Transfer-Encoding", "base64")
 message.attach(msgImage)
 

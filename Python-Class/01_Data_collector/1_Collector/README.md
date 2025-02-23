@@ -9,7 +9,7 @@
 7. [Spot-Premier League](_7_Scraping_Spot_Premier_League.py)
 8. [Weather](_8_Scraping_Weather_windy.py)
 
-## Code descriptions
+## Descriptions
 ### Stock - yfinance
 #### Step 1. Pypi Yahoo! Finance's API
   * Site : https://pypi.org/project/yfinance/

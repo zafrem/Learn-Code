@@ -7,12 +7,12 @@ So, I decided to write some code to test this idea with an example.
 
 ## [01 Data Getter](01_Data_collector/README.md)
 
-## [02 Web development](02_Web_development/README.md)
+## ~~[02 Web development](02_Web_development/README.md)~~
 
-## 03 Data analysis and Visualization
+## ~~03 Data analysis and Visualization~~
 ## ~~04 Office Automation~~
 ## ~~05 Machine learning and AI~~
-## ~~06 Skill Training~~
+## ~~06 Training~~
 ## ~~07 Database managment~~
 ## ~~08 Cybersecurity and vulnerability analysis~~
 ## ~~09 Network programming~~
