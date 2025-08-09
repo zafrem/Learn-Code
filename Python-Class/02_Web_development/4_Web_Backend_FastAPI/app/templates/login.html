@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 / 회원가입</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+<div class="container">
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <!-- 로그인 폼 -->
+    <form id="login-form" action="/login" method="post">
+        <h2>로그인</h2>
+        <input type="text" name="username" placeholder="아이디" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">로그인</button>
+        <div class="oauth-buttons">
+            <a href="/auth/google"><button type="button" class="google-btn">Google 로그인</button></a>
+            <a href="/auth/okta"><button type="button" class="okta-btn">Okta 로그인</button></a>
+        </div>
+        <p class="toggle-link" onclick="showRegister()">회원가입하기</p>
+    </form>
+
+    <!-- 회원가입 폼 -->
+    <form id="register-form" action="/register" method="post" style="display: none;">
+        <h2>회원가입</h2>
+        <input type="text" name="username" placeholder="아이디" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">회원가입</button>
+        <p class="toggle-link" onclick="showLogin()">로그인하기</p>
+    </form>
+</div>
+
+<script>
+    function showRegister() {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("register-form").style.display = "block";
+    }
+
+    function showLogin() {
+        document.getElementById("register-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+    }
+</script>
+</body>
+</html>

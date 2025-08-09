@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/css/tables.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h2>{{ title }}</h2>
+    <div style="margin-bottom: 10px; display: flex; justify-content: flex-end; gap: 5px;">
+        <input type="text" id="searchInput" placeholder="전체 검색..." />
+        <button id="searchBtn">검색</button>
+        <button id="addDataBtn">추가 모드</button>
+        <button id="downloadBtn">CSV 다운로드</button>
+    </div>
+    <div id="addDataForm" style="display: none; margin-bottom: 10px;">
+        <input type="text" id="inputName" placeholder="이름" />
+        <input type="number" id="inputAge" placeholder="나이" />
+        <button id="submitBtn">저장</button>
+    </div>
+    <p id="loadingMessage" style="display: none;">⏳ 로딩 중입니다...</p>
+    <p id="noResults" style="display: none; color: red;">검색 결과가 없습니다.</p>
+    <p id="dataCount" style="font-size: 14px;"></p>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <div id="pagination"></div>
+    <script id="data-json" type="application/json">
+        {{ data | tojson }}
+    </script>
+    <script src="/static/js/tables.js"></script>
+</body>
+</html>

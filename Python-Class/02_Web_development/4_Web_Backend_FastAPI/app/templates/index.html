@@ -1,0 +1,43 @@
+<!-- app/templates/index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>FastAPI 웹 {{ username }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        사용자: {{ username }} <a href="/logout">로그아웃</a>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li onclick="loadContent('welcome')">Hi. FastAPI Test Web.</li>
+                <li onclick="loadContent('text_message')">Text Message</li>
+                <li onclick="loadContent('control')">Control (Form)</li>
+                <li onclick="loadContent('tables')">Tables (list)</li>
+                <li onclick="loadContent('wizard')">Wizard</li>
+                <li onclick="loadContent('word_cloud')">Word Cloud</li>
+                <li onclick="loadContent('bar_plot')">Bar Plot</li>
+                <li onclick="loadContent('pie_plot')">Pie Plot</li>
+                <li onclick="loadContent('line_plot')">Line Plot</li>
+                <li onclick="loadContent('sankey_diagram')">Sankey diagram</li>
+                <li onclick="loadContent('collapsible_tree')">Collapsible tree</li>
+                <li onclick="loadContent('parallel')">Parallel sets</li>
+                <li onclick="loadContent('treemap')">Treemap</li>
+                <li onclick="loadContent('hierarchical')">Hierarchical</li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="content" id="content-area">
+            <script>
+                window.onload = () => {
+                    loadContent('welcome');
+                }
+            </script>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
